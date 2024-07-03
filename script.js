@@ -26,4 +26,10 @@ const perguntas = [
             "A produção das espécies  é maior, reduz o controle de pragas, aumenta a distribuição da produção.",
         ]
     }
-]
+];
+
+function mostraPerguntas(){
+    caixaPerguntas.textContent = perguntas[0].enunciado;
+};
+
+mostraPerguntas();
