@@ -28,8 +28,24 @@ const perguntas = [
     }
 ];
 
+let atual = 0;
+let perguntaAtual;
+
 function mostraPerguntas(){
+    perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntas[0].enunciado;
+    mostraAlternativas();
 };
 
 mostraPerguntas();
+
+function mostraAlternativas(){
+    for (const alternativas of perguntaAtual.alternativas){
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativas.textContent = alternativa;
+        caixaAlternativas.appendChild(botaoAlternativas);
+    }
+};
+
+
+
