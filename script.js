@@ -26,7 +26,7 @@ const perguntas = [
             afirmacao: "Com a rigidez da fiscalização podemos induzir a mudança de comportamento das pessoas por meio de sanções."
             },
             {
-            texto: "Não, porque as leis não são cumpridas."
+            texto: "Não, porque as leis não são cumpridas.",
             afirmacao: "Há deficiência no sistema de fiscalização."
             }
         ]
@@ -48,6 +48,7 @@ const perguntas = [
 
 let atual = 0;
 let perguntaAtual;
+let historiaFinal = "";
 
 function mostraPerguntas(){
     perguntaAtual = perguntas[atual];
@@ -59,16 +60,19 @@ function mostraPerguntas(){
 mostraPerguntas();
 
 function mostraAlternativas(){
-    for (const alternativas of perguntaAtual.alternativas){
+    for (const alternativa of perguntaAtual.alternativas){
         const botaoAlternativas = document.createElement("button");
         botaoAlternativas.textContent = alternativa.texto;
-        botaoAlternativas.addEventListener("click", function(){
-            atual++;
-            mostraPerguntas();
-        });
+        botaoAlternativas.addEventListener("click", ()=>respostaFinal(alternativa));
         caixaAlternativas.appendChild(botaoAlternativas);
     }
 };
 
+function respostaFinal(opcaoSelecionada){
+    const afirmacao = opcaoSelecionada.afirmacao;
+    historiaFinal = afirmacao ;
+    atual++;
+    mostraPerguntas();
+}
 
 
