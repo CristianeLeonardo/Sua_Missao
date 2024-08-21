@@ -51,9 +51,14 @@ let perguntaAtual;
 let historiaFinal = "";
 
 function mostraPerguntas(){
+    if (atual >= perguntas.length){
+        mostraResultado() ;
+        return ;
+    };
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
     caixaAlternativas.textContent = "";
+    textoResultado.textContent = "";
     mostraAlternativas();
 };
 
@@ -70,9 +75,13 @@ function mostraAlternativas(){
 
 function respostaFinal(opcaoSelecionada){
     const afirmacao = opcaoSelecionada.afirmacao;
-    historiaFinal = afirmacao ;
+    historiaFinal += afirmacao + " " ;
     atual++;
     mostraPerguntas();
 }
 
-
+function mostraResultado(){
+    caixaPerguntas.textContent    = "Em 2049 milhares de pessoas estarão usando a inteligência artificial para facilitar suas vidas. A pergunta que fica é: Como fica a privacidade do indivíduo com tanta intromissão em sua vida?" ;
+    textoResultado.textContent    = historiaFinal ;
+    caixaAlternativas.textContent = "" ;
+}
